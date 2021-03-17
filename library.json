@@ -1,0 +1,16 @@
+{
+    "name": "MH-Z14A Serial",
+    "keywords": "CO2, Sensor, ESP32, Serial",
+    "description": "A very simple and crude library to read values of the mh-z14a sensor through its serial port",
+    "repository": [
+        "type": "git",
+        "url": "https://github.com/benimautner/mh-z14a.git"
+    ]
+    "frameworks": "arduino",
+    "platforms": [
+        "espressif32"
+    ]
+    "authors": [
+        "name": "benimautner"
+    ]
+}
