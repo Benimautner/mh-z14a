@@ -9,13 +9,17 @@ int Z14A::init() {
     return 0;
 }
 
-int Z14A::getValue() {
+int Z14A::getValue(int& co2_concentration) {
 	unsigned char command[9] = {0xFF, 0x01, 0x86, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
     sendCommand(command, 9);
     char value[9] = {0x00};
     readValueFromSerial(value, 9);
-    return convertRawDataToInt(value, 9);
-    //return 0;
+
+    co2_concentration = convertRawDataToInt(value, 9);
+    if(co2_concentration > 10000 || co2_concentration < 0) {
+        return Z14A_OUT_OF_BOUNDS;
+    }
+    return Z14A_OK;
 }
 
 int Z14A::sendCommand(unsigned char* command, int len) {
